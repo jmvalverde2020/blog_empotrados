@@ -76,17 +76,21 @@ Si no se ha guardado el cambio, este no se efectúa.
 
 Además de comprobar el estado actual, la función loop(), comprueba el estado del botón y llama al thread que actualiza los segundos en cada iteración.
 
-## Problemas
+## Otras Implementaciones
 Por falta de tiempo no he podido implementar un watchdog, sin embargo el programa no parece bloquearse.
 
 La idea principal de la implementación del botón era a través de una interrupción hardware, sin embargo, para medir el tiempo pulsado y evitar el bouncing, solo se me ocurría usar millis(), y dado que en una ISR no se pueden usar, y el cómputo debe ser mínimo, opté por comprobar el estado en cada iteración de manera activa. Esto al final, no ha supuesto ningún problema y el comportamiento es el deseado en todas las situaciones que he probado.
 
 El contador Timer1 a veces puede no corresponderse con el tiempo deseado debido a varios factores, sin embargo, haciendo dettachInterrupt(), start() y stop(), parece haberse mejorado mucho el comportamiento.
 
+Para comunicar las variables entre las distintas funciones evitando el paso de argumentos, he declarado varias variables globales así como distintos threads para los distintos sensores.
+
+En total he creado threads para hacer scroll del LCD cada 0.3s, para encender ambos LEDs, para mostrar la distancia en el modo admin cada 0.2s, para mostrar el sensor DHT cada 2s, para este último, 2 threads distintos para el modo normal y el modo admin, y otros dos para contar los segundos y para mostrarlos, así como un último para leer el Joystick, haciendo un total de 10 threads que trabajan conjuntamente.
+
 ## Video
 
 Aquí un video del funcionamiento del controlador.
 
-
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://jumpshare.com/embed/48FxAYcAk2giIT5oXqwC" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 [Vuelve al blog](../)

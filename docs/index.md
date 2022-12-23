@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 ---
 
 Este es un blog dedicado a hacer un seguimiento de las prácticas de Sistemas Empotrados y de tiempo real.

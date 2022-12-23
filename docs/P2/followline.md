@@ -4,7 +4,7 @@ layout: team
 
 # Sigue Lineas con conexión MQTT
 
-Esta última práctica ha consistido en una competición, en la cual, usando el kit de elegoo smart robot car v4.0, debiamos ompletar un circuito hecho con cinta negra de la forma más rápida posible.
+Esta última práctica ha consistido en una competición, en la cual, usando el kit de elegoo smart robot car v4.0, debiamos completar un circuito hecho con cinta negra de la forma más rápida posible.
 
 Aparte del código del sigue-lineas, contábamos con una ESP32 con conexión wifi, con la cuál debíamos enviar mensajes a un servidor a través de MQTT.
 
@@ -12,8 +12,14 @@ Dado que un código sigue-lineas no es excesivamente complicado, la dificultad d
 
 En nuestro caso hablaremos de las implementaciones que hemos usado para completar esta práctica. Sin contar las que eran obligatorias como el envío de mensajes.
 
-## Conexión MQTT
-
+## Programación del ESP32
+A la hora de implementar el ESP32 hemos necesitado crear una conexión para envío de mensajes con la placa arduino y otra conexion MQTT con la red.
+### Conexión con la placa Arduino
+Para conectarnos con la placa hemos usado la comunicación UART con la cual a través del puerto serie podemos recivir y enviar mensajes. Sin embargo, aunque el ESP32 cuenta con dos puertos series, la placa arduino solo cuenta con uno por lo que fue necesario crear un sistema para diferenciar los mensajes que eran para el ESP32 de los que no. El sistema fue poner entre corchetes los mensajes dirigidos a el ESP32. En el programa del ESP32, cuando se encontraba un inicio de corchete({), guardaba todos los caracteres siguientes hasta encontrar un final de corchete. 
+### Comunicación MQTT
+Para la conexión MQTT es necesario establecer conexión WiFi. Esto se hace al principio del programa, luego, dentro del loop, si no hay conexión con el server MQTT, tiene tres intentos para conectarse y si no se queda parado. Para el envio de mensajes hemos inplementado la QoS 2 (calidad de servicio exactly one) asegurandonos de que el mensaje se envie. Si hay un error a la hora de enviar el mensaje, se vuelve a enviar.  
+### Envio del ping
+Cada 4 segundos había que enviar un ping al servidor MQTT, en nuestro caso, simplemente hemos hecho un if en el loop en el que entra solo si el tiempo transcurrido desde el ultimo ping es de 4000ms o mas. 
 ## Implementaciones
 
 - Controlador Proporcional.

@@ -1,8 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     
     <!-- MathJax -->
     <script type="text/javascript"
@@ -29,18 +28,10 @@
       {% endif %}
     </header>
 
-      <div id="banner">
-      </div><!-- end banner -->
+     <main id="content" class="main-content" role="main">
+      {{ content }}
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        {{ content }}
-
-      </section>
-      <footer>
+      <footer class="site-footer">
         {% if site.github.is_project_page %}
           <p>Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>
 		<a href="https://github.com/mwiesenberg2020">mwiesenberg2020</a>

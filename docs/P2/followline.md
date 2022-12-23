@@ -46,6 +46,8 @@ Mientras que en la segunda la velocidad del lado que gira aumenta, y la del otro
 
 Esto se hace para que en el caso en el que tenga que girar brusco nos aseguremos de controlar la velocidad de giro máxima y al disminuir la otra, el giro es más pronunciado.
 
+No hemos utilizado factor D porque creemos que la entrada del sensor de color cambia drasticamente entre lectura y lectura debido a la velocidad que lleva el robot y la calidad de los sensores. Por otro lado, tampoco hemos implementado un I ya que añadirlo suele generar mayor oscilación o incluso volverlos un sistema inestable. 
+
 ### Búsqueda de línea
 
 El algoritmo usado al perder la línea es bastante simple.

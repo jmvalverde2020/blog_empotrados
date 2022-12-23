@@ -32,10 +32,8 @@ La primera y principal implementación que hemos usado es un controlador proporc
 
 Hay cuatro situaciones claramente diferenciadas en las que buscábamos comportamientos diferentes entre ellas:
 
-![Posibles casos](./media/casos.png)
-
-
 - Linea en el centro: Este es el mejor caso posible, donde el robot ve la línea con el sensor central por lo que no necesita girar y puede ir lo más rápido posible.
+![Caso Linea Centro](./media/A.png)
 - Linea entre el centro y un lateral: Esta situación se da cuando encuentra una curva y detecta la línea con el sensor central y uno lateral, en este caso debe girar proporcionalmente al valor que detecte el sensor lateral, es decir, que gire más cuanta más linea vea, ya que significará que se está saliendo del circuito.
 - Linea en el lateral: Esta situación se da si el robot no ha sido capaz de girar a tiempo en una curva, la línea sólo es detectada por un sensor lateral, por lo que se está saliendo. Esta vez la velocidad de giro tiene que ser inversamente proporcional al valor del sensor ya que en caso de dejar de ver la línea, estará saliendose más del circuito. Si dejara de verla por estar centrándola, pasaría a la situacion anterior.
 - Linea perdida: Esta es la peor situación, ninguno de los sensores detectan la línea y debe adoptar el comportamiento de encontrar la línea.

@@ -46,7 +46,7 @@ Hay cuatro situaciones claramente diferenciadas en las que buscábamos comportam
 
 - Linea perdida: Esta es la peor situación, ninguno de los sensores detectan la línea y debe adoptar el comportamiento de encontrar la línea.
 
-![Caso linea perdida](./media/base.png)
+![Caso linea perdida](./media/Base.png)
 
 Para que gire más en la tercera situación que en la segunda, la asignación de velocidades es distinta.
 

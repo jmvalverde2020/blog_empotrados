@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: exercise
 ---
 
 # Controlador de Máquina Expendedora
